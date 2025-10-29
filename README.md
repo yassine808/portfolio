@@ -7,7 +7,7 @@
 
 - 📫 How to reach me **ysmagri7@gmail.com**
 
-- ⚡ Fun fact **i love gaming**
+- ⚡ Fun fact **i love Cats **
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
