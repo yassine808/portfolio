@@ -34,5 +34,12 @@ tmp/
 temp/
 cache/
 
+# Init scaffolding (local-only)
+init/
+
 # Impeccable context (local-only)
 .agents/
+.gitignore
+claude.md
+design.md
+product.md
