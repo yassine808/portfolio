@@ -14,9 +14,9 @@ A personal portfolio that showcases Magri Mohammed Yassine's engineering skills,
 
 ## Brand Personality
 
-Warm. Editorial. Precise.
+Warm. Refined. Quiet.
 
-The feel of a high-end design magazine fused with a developer's terminal. Confident without being loud. Every detail is intentional — typography, spacing, and color work together to signal craft and care. The personality says: "I build things thoughtfully."
+The feel of a luxury editorial — Conde Nast Traveler meets a boutique atelier. Confident without being loud. Generous whitespace, warm cream tones, and a monumental serif signal taste and care. The personality says: "I build things thoughtfully, and I have good taste."
 
 ## Anti-references
 
@@ -26,16 +26,18 @@ The feel of a high-end design magazine fused with a developer's terminal. Confid
 - No 3-column identical card grids with icon + heading + text
 - No hero-metric template (big number + small label + gradient accent)
 - No emojis as icons
-- No Space Grotesk, Inter, or other AI-default fonts
+- No Space Grotesk, Inter, Playfair Display, or other AI-default fonts
+- No mono body text (this is not a technical/developer site)
 - No startup slop: "Elevate", "Seamless", "Next-Gen", "Synergy"
-- Should NOT look like a generic developer portfolio or a SaaS landing page
+- Should NOT look like a generic developer portfolio, SaaS landing page, or dark-mode terminal site
+- No repeated tiny uppercase tracked labels above every section (AI scaffolding)
 
 ## Design Principles
 
-1. **Editorial over generic** — Layouts should feel designed, not assembled from a component library. Asymmetric grids, varied spacing, magazine-style section breaks.
-2. **Typography is the interface** — Serif headlines carry the brand. Mono body text communicates technical credibility. Every font choice is deliberate.
-3. **Restraint signals confidence** — One accent color. No gradients. No decorative effects for their own sake. Every visual element earns its place.
-4. **Motion with purpose** — Animations guide attention and reward exploration. Scroll reveals, text effects, and micro-interactions should feel orchestrated, not scattered.
+1. **Luxury over loud** — Generous whitespace, restrained color, and monumental typography. The design breathes. Every element earns its place through restraint, not decoration.
+2. **Typography is the interface** — Recoleta serif for display carries the editorial voice. DM Sans for body provides warmth and readability. Two fonts, both chosen for voice.
+3. **Restraint signals confidence** — One accent color (terracotta). No gradients. No decorative effects for their own sake. The luxury is in the spacing.
+4. **Motion with purpose** — Subtle, slow, luxurious. Fade-ins with long durations. No gimmicks. Scroll reveals should feel like turning pages, not triggering animations.
 5. **Content first** — The design frames the work. Projects, skills, and experience are the stars. Navigation and layout get out of the way.
 
 ## Accessibility & Inclusion
