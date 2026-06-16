@@ -4,35 +4,36 @@ Personal portfolio site. Single-file HTML (no build step). Brand register.
 
 ## Design Context
 
-See `PRODUCT.md` for strategic context and `DESIGN.md` (when generated) for visual tokens.
+See `PRODUCT.md` for strategic context and `DESIGN.md` for visual tokens.
 
-**Aesthetic**: "Editorial Terminal" — warm dark palette, Playfair Display serif headlines, JetBrains Mono body text, amber/gold accent. Magazine-like layouts with asymmetric grids. No neon, no glassmorphism, no gradient text, no emojis.
+**Aesthetic**: "Quiet Luxury" — warm cream palette, DM Serif Display headlines, DM Sans body text, terracotta accent. Light mode. Generous whitespace without excess. Asymmetric split-screen layouts. No neon, no glassmorphism, no gradient text, no emojis.
 
 **Register**: `brand` — the design IS the product.
 
 ## File Structure
 
 - `index.html` — the entire portfolio (single file, all CSS and JS inline)
-- `PRODUCT.md` — strategic brand context for impeccable skill
-- `DESIGN.md` — visual design tokens (run `$impeccable document` to generate)
-- `init/` — initialization scaffolding
+- `PRODUCT.md` — strategic brand context
+- `DESIGN.md` — visual design tokens
+- `assets/` — resume PDF and profile photo
 - `.gitignore` — standard ignores
 
 ## Working Conventions
 
 - No build tools. Edit `index.html` directly.
 - All CSS uses custom properties defined in `:root`.
-- GSAP loaded from CDN for scroll animations.
-- Fonts loaded from Google Fonts (Playfair Display + JetBrains Mono).
+- GSAP loaded from CDN for scroll animations (ScrollTrigger plugin).
+- Fonts loaded from Google Fonts (DM Serif Display + DM Sans).
 - Test by opening `index.html` in a browser or serving with a local server.
 
-## Design Rules (from PRODUCT.md)
+## Design Rules
 
-- One accent color: `var(--accent)` / `#d4a853`
+- One accent color: `var(--accent)` / `#b87a5a`
 - No gradients on text
 - No glassmorphism
-- No emojis as icons (use monogram SVGs or two-letter abbreviations)
-- No Space Grotesk, Inter, or other AI-default fonts
-- Asymmetric layouts — avoid centered hero, 3-column grids
+- No emojis as icons
+- No Playfair Display, Space Grotesk, Inter, JetBrains Mono
+- Asymmetric layouts — split-screen hero, 2-column grids
 - `min-h-[100dvh]` for mobile-safe full-height sections
 - Respect `prefers-reduced-motion`
+- GSAP animations: expo-out easing, staggered reveals, parallax
