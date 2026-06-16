@@ -6,7 +6,7 @@
 <title>Magri Mohammed Yassine — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #faf8f5;
@@ -20,8 +20,11 @@
   --text-muted: #9a8e84;
   --border: rgba(42,33,24,0.06);
   --border-strong: rgba(42,33,24,0.12);
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Geist Mono', 'SF Mono', 'Fira Code', monospace;
+  --font-display-weight: 400;
+  --font-display-italic: italic;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --dur: 0.6s;
 }
@@ -94,8 +97,9 @@ nav.scrolled {
 .nav-links a {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: .7rem;
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 400;
   letter-spacing: .1em;
   text-transform: uppercase;
   transition: color var(--dur) var(--ease);
@@ -115,8 +119,9 @@ nav.scrolled {
   display: inline-flex;
   align-items: center;
   gap: .4rem;
-  font-size: .68rem;
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  font-weight: 400;
   letter-spacing: .06em;
   color: var(--accent);
   padding: .3rem .75rem;
@@ -152,8 +157,9 @@ nav.scrolled {
   align-items: center;
 }
 .hl {
+  font-family: var(--font-mono);
   font-size: .68rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -164,6 +170,7 @@ nav.scrolled {
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 5.5vw, 4.8rem);
   font-weight: 400;
+  font-optical-sizing: auto;
   line-height: 1;
   letter-spacing: -.03em;
   margin-bottom: 1.5rem;
@@ -195,7 +202,7 @@ nav.scrolled {
   cursor: pointer;
   transition: all var(--dur) var(--ease);
   border: 1px solid transparent;
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   position: relative;
   overflow: hidden;
 }
@@ -266,8 +273,8 @@ nav.scrolled {
   margin-top: 3rem;
 }
 .ib { display: flex; flex-direction: column; gap: .25rem; }
-.il { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); font-weight: 500; }
-.iv { font-family: var(--font-display); font-size: .9rem; color: var(--text-primary); font-weight: 400; }
+.il { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; }
+.iv { font-family: var(--font-display); font-size: .95rem; color: var(--text-primary); font-weight: 500; }
 .iv.ac { color: var(--accent); }
 .isoc { display: flex; gap: .5rem; align-items: center; justify-content: flex-end; }
 .isoc a {
@@ -295,8 +302,9 @@ section + section { border-top: 1px solid var(--border); }
 /* ── Section header ── */
 .sh { margin-bottom: 2.5rem; }
 .sk {
+  font-family: var(--font-mono);
   font-size: .65rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -381,14 +389,15 @@ section + section { border-top: 1px solid var(--border); }
 .pd { font-size: .85rem; color: var(--text-secondary); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: .6rem; }
 .pt { display: flex; flex-wrap: wrap; gap: .35rem; }
 .pt span {
-  font-size: .62rem;
+  font-family: var(--font-mono);
+  font-size: .6rem;
   padding: .15rem .5rem;
   border: 1px solid var(--border);
   border-radius: 100px;
   color: var(--text-muted);
   letter-spacing: .04em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 400;
   transition: all var(--dur) var(--ease);
 }
 .pi:hover .pt span { border-color: var(--accent-border); color: var(--text-secondary); }
@@ -400,7 +409,7 @@ section + section { border-top: 1px solid var(--border); }
 .gi { font-size: .95rem; color: var(--text-secondary); line-height: 1.9; font-weight: 300; margin-bottom: 1.5rem; }
 .gs { display: flex; gap: 2rem; margin-bottom: 1.5rem; }
 .gsv { font-family: var(--font-display); font-size: 2rem; font-weight: 400; color: var(--text-primary); letter-spacing: -.02em; line-height: 1; margin-bottom: .15rem; }
-.gsl { font-size: .62rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
+.gsl { font-family: var(--font-mono); font-size: .62rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
 .rl { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; }
 .ri {
   display: flex;
@@ -435,7 +444,7 @@ section + section { border-top: 1px solid var(--border); }
 .cli:hover .clv { color: var(--accent); }
 .cf { display: flex; flex-direction: column; gap: 1rem; }
 .fld { display: flex; flex-direction: column; gap: .4rem; }
-.fl { font-size: .65rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
+.fl { font-family: var(--font-mono); font-size: .65rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
 .fi {
   background: var(--surface);
   border: 1px solid transparent;
@@ -458,7 +467,7 @@ textarea.fi { min-height: 120px; }
   border: 1px solid var(--text-primary);
   padding: .8rem 1.8rem;
   border-radius: 100px;
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-size: .72rem;
   font-weight: 500;
   letter-spacing: .06em;
