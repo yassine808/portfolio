@@ -37,7 +37,7 @@ body {
 }
 ::selection { background: var(--accent); color: var(--bg); }
 
-/* Noise texture */
+/* ── Noise texture ── */
 body::before {
   content: '';
   position: fixed;
@@ -50,10 +50,21 @@ body::before {
   background-size: 256px 256px;
 }
 
-/* Layout */
+/* ── Scroll progress bar ── */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 1000;
+}
+
+/* ── Layout ── */
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
 
-/* Nav */
+/* ── Nav ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -123,7 +134,7 @@ nav.scrolled {
   50% { opacity: .4; transform: scale(.8); }
 }
 
-/* Hero */
+/* ── Hero ── */
 #hero {
   min-height: 100dvh;
   display: flex;
@@ -132,6 +143,7 @@ nav.scrolled {
   padding-top: 5rem;
   padding-bottom: 3rem;
   position: relative;
+  overflow: hidden;
 }
 .hero-grid {
   display: grid;
@@ -167,6 +179,8 @@ nav.scrolled {
   margin-bottom: 2rem;
 }
 .ha { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+
+/* ── Buttons ── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -201,7 +215,7 @@ nav.scrolled {
 .ba { transition: transform var(--dur) var(--ease); display: inline-block; }
 .btn:hover .ba { transform: translateX(4px); }
 
-/* Hero photo */
+/* ── Hero photo ── */
 .hero-photo {
   position: relative;
   display: flex;
@@ -241,7 +255,7 @@ nav.scrolled {
   left: calc(50% - 140px + 12px);
 }
 
-/* Identity strip */
+/* ── Identity strip ── */
 .is {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -274,11 +288,11 @@ nav.scrolled {
   transform: translateY(-2px);
 }
 
-/* Sections */
+/* ── Sections ── */
 section { padding: 5rem 0; }
 section + section { border-top: 1px solid var(--border); }
 
-/* Section header */
+/* ── Section header ── */
 .sh { margin-bottom: 2.5rem; }
 .sk {
   font-size: .65rem;
@@ -298,13 +312,13 @@ section + section { border-top: 1px solid var(--border); }
   line-height: 1.1;
 }
 
-/* About */
+/* ── About ── */
 .ag { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
 .at { font-size: .95rem; color: var(--text-secondary); line-height: 1.9; font-weight: 300; }
 .at p + p { margin-top: 1rem; }
 .at strong { color: var(--text-primary); font-weight: 500; }
 
-/* Skills */
+/* ── Skills ── */
 .sl { display: flex; flex-wrap: wrap; gap: .5rem; }
 .si {
   padding: .4rem .9rem;
@@ -323,7 +337,7 @@ section + section { border-top: 1px solid var(--border); }
   transform: translateY(-1px);
 }
 
-/* Experience */
+/* ── Experience ── */
 .eg { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 .ec {
   padding: 1.5rem 0;
@@ -346,7 +360,7 @@ section + section { border-top: 1px solid var(--border); }
 .eo { font-size: .8rem; color: var(--accent); font-weight: 500; margin-bottom: .75rem; }
 .eb { font-size: .85rem; color: var(--text-secondary); line-height: 1.8; font-weight: 300; }
 
-/* Projects */
+/* ── Projects ── */
 .pl { display: flex; flex-direction: column; }
 .pi {
   display: grid;
@@ -381,7 +395,7 @@ section + section { border-top: 1px solid var(--border); }
 .pa { font-size: 1rem; color: var(--text-muted); transition: all var(--dur) var(--ease); padding-top: .15rem; }
 .pi:hover .pa { color: var(--accent); transform: translateX(6px); }
 
-/* GitHub */
+/* ── GitHub ── */
 .gg { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
 .gi { font-size: .95rem; color: var(--text-secondary); line-height: 1.9; font-weight: 300; margin-bottom: 1.5rem; }
 .gs { display: flex; gap: 2rem; margin-bottom: 1.5rem; }
@@ -402,7 +416,7 @@ section + section { border-top: 1px solid var(--border); }
 .rn { font-size: .82rem; font-weight: 500; color: var(--text-primary); }
 .rm { font-size: .72rem; color: var(--text-muted); font-weight: 400; }
 
-/* Contact */
+/* ── Contact ── */
 #contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
 .ci { font-size: .95rem; color: var(--text-secondary); line-height: 1.9; font-weight: 300; margin-bottom: 1.5rem; }
 .cl { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2rem; }
@@ -456,7 +470,7 @@ textarea.fi { min-height: 120px; }
 .fs:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
 .fm { font-size: .78rem; color: var(--accent); min-height: 1.2rem; font-weight: 400; }
 
-/* Footer */
+/* ── Footer ── */
 footer {
   border-top: 1px solid var(--border);
   padding: 2rem 0;
@@ -467,28 +481,42 @@ footer {
   letter-spacing: .02em;
 }
 
-/* Scroll animations — elements start hidden, GSAP reveals them */
+/* ── Scroll animation initial states ──
+   Elements start hidden; GSAP reveals them via inline styles.
+   Using visibility:hidden prevents layout flash while keeping elements measurable. */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(36px);
 }
 .reveal-left {
   opacity: 0;
-  transform: translateX(-30px);
+  transform: translateX(-40px);
 }
 .reveal-right {
   opacity: 0;
-  transform: translateX(30px);
+  transform: translateX(40px);
 }
 .reveal-scale {
   opacity: 0;
-  transform: scale(.95);
+  transform: scale(.92);
 }
 
-/* Stagger children */
-.stagger > * { opacity: 0; transform: translateY(20px); }
+/* Stagger containers — children start hidden */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+}
 
-/* Animated gradient orbs */
+/* ── Section rule decoration ── */
+.section-rule {
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: 1rem;
+  border-radius: 2px;
+}
+
+/* ── Ambient orbs ── */
 .orb {
   position: fixed;
   border-radius: 50%;
@@ -520,16 +548,7 @@ footer {
   66% { transform: translate(-20px, 30px); }
 }
 
-/* Horizontal rule decoration */
-.section-rule {
-  width: 40px;
-  height: 2px;
-  background: var(--accent);
-  margin-bottom: 1rem;
-  border-radius: 2px;
-}
-
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
   .hero-photo { order: -1; }
@@ -552,6 +571,9 @@ footer {
 </style>
 </head>
 <body>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progressBar"></div>
 
 <!-- Ambient orbs -->
 <div class="orb orb-1"></div>
@@ -618,8 +640,8 @@ footer {
       <h2 class="st">About</h2>
     </div>
     <div class="ag">
-      <p class="at reveal">I am a <strong>5th-year computer science and networks engineering student</strong> at EMSI Rabat, with a hands-on approach to building software that solves real problems. My work spans full-stack web development, test automation, AI-powered applications, and desktop tooling.</p>
-      <p class="at reveal">During my internship at Morocco Customs Administration, I built automated web testing pipelines with Selenium and Cucumber, writing BDD scenarios that caught regressions before they shipped. I have also built a gesture-controlled camera tracker using OpenCV and MediaPipe, and a Morocco History chatbot powered by a local LLM. I am currently seeking a <strong>PFE internship</strong> where I can contribute to meaningful projects.</p>
+      <p class="at reveal-left">I am a <strong>5th-year computer science and networks engineering student</strong> at EMSI Rabat, with a hands-on approach to building software that solves real problems. My work spans full-stack web development, test automation, AI-powered applications, and desktop tooling.</p>
+      <p class="at reveal-right">During my internship at Morocco Customs Administration, I built automated web testing pipelines with Selenium and Cucumber, writing BDD scenarios that caught regressions before they shipped. I have also built a gesture-controlled camera tracker using OpenCV and MediaPipe, and a Morocco History chatbot powered by a local LLM. I am currently seeking a <strong>PFE internship</strong> where I can contribute to meaningful projects.</p>
     </div>
   </div>
 </section>
@@ -632,7 +654,7 @@ footer {
       <div class="sk">Expertise</div>
       <h2 class="st">Technical skills</h2>
     </div>
-    <div class="sl stagger">
+    <div class="sl stagger" id="skillsList">
       <span class="si">HTML</span><span class="si">CSS</span><span class="si">JavaScript</span><span class="si">TypeScript</span><span class="si">XML</span>
       <span class="si">Python</span><span class="si">Flask</span><span class="si">Java</span><span class="si">.NET</span><span class="si">C / C++</span><span class="si">C#</span>
       <span class="si">SQL</span><span class="si">PostgreSQL</span><span class="si">Supabase</span>
@@ -651,7 +673,7 @@ footer {
       <div class="sk">Background</div>
       <h2 class="st">Experience & education</h2>
     </div>
-    <div class="eg">
+    <div class="eg" id="expGrid">
       <div class="ec reveal">
         <div class="ed">07 / 2024 — 09 / 2024</div>
         <div class="et">Development Intern</div>
@@ -688,7 +710,7 @@ footer {
       <div class="sk">Selected work</div>
       <h2 class="st">Projects</h2>
     </div>
-    <div class="pl stagger">
+    <div class="pl stagger" id="projectsList">
       <div class="pi">
         <span class="py">2024</span>
         <div>
@@ -759,9 +781,9 @@ footer {
       <div class="reveal-left">
         <p class="gi">A selection of public repositories. Each one represents a problem I found interesting enough to solve and publish.</p>
         <div class="gs">
-          <div><div class="gsv" data-count="12">0</div><div class="gsl">Repos</div></div>
-          <div><div class="gsv" data-count="14">0</div><div class="gsl">Stars</div></div>
-          <div><div class="gsv" data-count="3">0</div><div class="gsl">Following</div></div>
+          <div><div class="gsv counter" data-target="12">0</div><div class="gsl">Repos</div></div>
+          <div><div class="gsv counter" data-target="14">0</div><div class="gsl">Stars</div></div>
+          <div><div class="gsv counter" data-target="3">0</div><div class="gsl">Following</div></div>
         </div>
         <a href="https://github.com/yassine808" target="_blank" class="btn btn-g">View profile <span class="ba">→</span></a>
       </div>
@@ -809,102 +831,241 @@ footer {
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Hero entrance animation ──
-const heroTl = gsap.timeline({ delay: 0.2 });
-heroTl
-  .to('.hero-grid .reveal', { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out', stagger: 0.12 })
-  .to('.hero-grid .reveal-right', { opacity: 1, x: 0, duration: 1, ease: 'expo.out' }, '-=0.6')
-  .to('#hero .is', { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' }, '-=0.4');
+// ═══════════════════════════════════════════════
+//  Reduced motion guard
+// ═══════════════════════════════════════════════
+const mm = gsap.matchMedia();
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-// ── Scroll-triggered reveals ──
-document.querySelectorAll('.reveal').forEach(el => {
-  if (el.closest('#hero')) return; // hero handled above
-  gsap.to(el, {
-    opacity: 1, y: 0,
-    duration: 0.8, ease: 'expo.out',
-    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+mm.add('(prefers-reduced-motion: reduce)', () => {
+  // Instantly show everything, skip all animations
+  gsap.set('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger > *', {
+    opacity: 1, x: 0, y: 0, scale: 1
   });
+  gsap.set('.progress-bar', { scaleX: 0 });
+  // Kill all ScrollTriggers
+  ScrollTrigger.getAll().forEach(st => st.kill());
 });
 
-// ── Reveal from sides ──
-document.querySelectorAll('.reveal-left').forEach(el => {
-  gsap.to(el, {
-    opacity: 1, x: 0,
-    duration: 0.9, ease: 'expo.out',
-    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
-  });
-});
-document.querySelectorAll('.reveal-right').forEach(el => {
-  if (el.closest('#hero')) return;
-  gsap.to(el, {
-    opacity: 1, x: 0,
-    duration: 0.9, ease: 'expo.out',
-    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
-  });
-});
+mm.add('(prefers-reduced-motion: no-preference)', () => {
 
-// ── Staggered children ──
-document.querySelectorAll('.stagger').forEach(container => {
-  const children = container.children;
-  ScrollTrigger.create({
-    trigger: container,
-    start: 'top 85%',
-    onEnter: () => {
-      gsap.to(children, {
-        opacity: 1, y: 0,
-        duration: 0.5, ease: 'expo.out',
-        stagger: 0.06
-      });
-    },
-    once: true
-  });
-});
-
-// ── Animated counters ──
-document.querySelectorAll('[data-count]').forEach(el => {
-  const target = parseInt(el.dataset.count);
-  ScrollTrigger.create({
-    trigger: el,
-    start: 'top 85%',
-    onEnter: () => {
-      gsap.to(el, {
-        innerText: target,
-        duration: 1.5,
-        ease: 'expo.out',
-        snap: { innerText: 1 },
-        onUpdate: () => { el.textContent = Math.round(el.innerText); }
-      });
-    },
-    once: true
-  });
-});
-
-// ── Parallax on hero photo ──
-ScrollTrigger.create({
-  trigger: '#hero',
-  start: 'top top',
-  end: 'bottom top',
-  onUpdate: (self) => {
-    const photo = document.querySelector('.hero-photo-inner');
-    if (photo) {
-      gsap.to(photo, { y: self.progress * 60, duration: 0.1, ease: 'none' });
+  // ═══════════════════════════════════════════════
+  //  1. Scroll progress bar (scrubbed to page scroll)
+  // ═══════════════════════════════════════════════
+  gsap.to('#progressBar', {
+    scaleX: 1,
+    ease: 'none',
+    transformOrigin: 'left center',
+    scrollTrigger: {
+      trigger: document.body,
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 0.3,
     }
-  }
-});
+  });
 
-// ── Nav scroll effect ──
-const nav = document.getElementById('nav');
-ScrollTrigger.create({
-  start: 60,
-  onUpdate: () => {
-    if (window.scrollY > 60) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  }
-});
+  // ═══════════════════════════════════════════════
+  //  2. Hero entrance — staggered timeline
+  // ═══════════════════════════════════════════════
+  const heroTl = gsap.timeline({ delay: 0.3 });
+  heroTl
+    .to('.hero-grid .reveal', {
+      opacity: 1, y: 0,
+      duration: 1, ease: 'expo.out',
+      stagger: 0.15
+    })
+    .to('.hero-grid .reveal-right', {
+      opacity: 1, x: 0,
+      duration: 1.2, ease: 'expo.out'
+    }, '-=0.8')
+    .to('#hero .is.reveal', {
+      opacity: 1, y: 0,
+      duration: 0.9, ease: 'expo.out'
+    }, '-=0.5');
 
-// ── Smooth nav underline already in CSS ──
+  // ═══════════════════════════════════════════════
+  //  3. Hero photo parallax (scrubbed)
+  // ═══════════════════════════════════════════════
+  gsap.to('.hero-photo-inner', {
+    yPercent: -15,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true,
+    }
+  });
 
-// ── Form handler ──
+  // Hero text moves opposite direction for depth
+  gsap.to('.hero-grid > div:first-child', {
+    yPercent: 8,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true,
+    }
+  });
+
+  // ═══════════════════════════════════════════════
+  //  4. Standard fade-up reveals
+  // ═══════════════════════════════════════════════
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (el.closest('#hero')) return;
+    gsap.to(el, {
+      opacity: 1, y: 0,
+      duration: 0.9, ease: 'expo.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none',
+      }
+    });
+  });
+
+  // ═══════════════════════════════════════════════
+  //  5. Side reveals (left / right)
+  // ═══════════════════════════════════════════════
+  document.querySelectorAll('.reveal-left').forEach(el => {
+    gsap.to(el, {
+      opacity: 1, x: 0,
+      duration: 1, ease: 'expo.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none',
+      }
+    });
+  });
+  document.querySelectorAll('.reveal-right').forEach(el => {
+    if (el.closest('#hero')) return;
+    gsap.to(el, {
+      opacity: 1, x: 0,
+      duration: 1, ease: 'expo.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none',
+      }
+    });
+  });
+
+  // ═══════════════════════════════════════════════
+  //  6. Batch reveal — experience cards
+  //     More efficient than individual ScrollTriggers
+  // ═══════════════════════════════════════════════
+  ScrollTrigger.batch('#expGrid .reveal', {
+    onEnter: elements => {
+      gsap.to(elements, {
+        opacity: 1, y: 0,
+        duration: 0.7, ease: 'expo.out',
+        stagger: 0.15,
+        overwrite: true,
+      });
+    },
+    start: 'top 88%',
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════
+  //  7. Staggered children — skills & projects
+  //     Waterfall reveal on scroll into view
+  // ═══════════════════════════════════════════════
+  document.querySelectorAll('.stagger').forEach(container => {
+    ScrollTrigger.create({
+      trigger: container,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.to(container.children, {
+          opacity: 1, y: 0,
+          duration: 0.5, ease: 'expo.out',
+          stagger: 0.05,
+          overwrite: true,
+        });
+      }
+    });
+  });
+
+  // ═══════════════════════════════════════════════
+  //  8. Animated number counters (scrubbed)
+  //     Uses object tweening for clean integer rounding
+  // ═══════════════════════════════════════════════
+  document.querySelectorAll('.counter').forEach(el => {
+    const target = parseInt(el.dataset.target, 10);
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: target,
+      duration: 2,
+      ease: 'expo.out',
+      onUpdate: () => { el.textContent = Math.round(obj.val); },
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      }
+    });
+  });
+
+  // ═══════════════════════════════════════════════
+  //  9. Section parallax — each section's content
+  //     shifts slightly as it scrolls into view
+  // ═══════════════════════════════════════════════
+  ['#about', '#skills', '#experience', '#projects', '#github', '#contact'].forEach(sel => {
+    const section = document.querySelector(sel);
+    if (!section) return;
+    const content = section.querySelector('.wrap');
+    if (!content) return;
+    gsap.fromTo(content,
+      { y: 40 },
+      {
+        y: -20,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        }
+      }
+    );
+  });
+
+  // ═══════════════════════════════════════════════
+  //  10. Nav scroll effect
+  // ═══════════════════════════════════════════════
+  const nav = document.getElementById('nav');
+  ScrollTrigger.create({
+    start: 60,
+    onUpdate: () => {
+      if (window.scrollY > 60) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+  });
+
+  // ═══════════════════════════════════════════════
+  //  11. Project row highlight on scroll
+  //     Each row gets a subtle background tint as it enters
+  // ═══════════════════════════════════════════════
+  document.querySelectorAll('#projectsList .pi').forEach(row => {
+    ScrollTrigger.create({
+      trigger: row,
+      start: 'top 80%',
+      end: 'bottom 20%',
+      onEnter: () => gsap.to(row, { backgroundColor: 'var(--accent-dim)', duration: 0.3 }),
+      onLeave: () => gsap.to(row, { backgroundColor: 'transparent', duration: 0.3 }),
+      onEnterBack: () => gsap.to(row, { backgroundColor: 'var(--accent-dim)', duration: 0.3 }),
+      onLeaveBack: () => gsap.to(row, { backgroundColor: 'transparent', duration: 0.3 }),
+    });
+  });
+
+}); // end matchMedia
+
+// ═══════════════════════════════════════════════
+//  Form handler (always runs)
+// ═══════════════════════════════════════════════
 function hs(e) {
   e.preventDefault();
   const f = e.target;
