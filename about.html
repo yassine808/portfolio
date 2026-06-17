@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Magri Mohammed Yassine — About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+<div class="noise"></div>
+<div class="spotlight" id="spotlight"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav id="mainNav">
+  <a href="index.html" class="logo">M<span>.</span>Y</a>
+  <div class="nav-links">
+    <a href="index.html" data-cursor-hover>Home</a>
+    <a href="about.html" style="color:var(--accent)" data-cursor-hover>About</a>
+    <a href="skills.html" data-cursor-hover>Skills</a>
+    <a href="experience.html" data-cursor-hover>Experience</a>
+    <a href="projects.html" data-cursor-hover>Projects</a>
+    <a href="contact.html" data-cursor-hover>Contact</a>
+    <div class="nav-status"><span class="dot"></span>Available</div>
+  </div>
+</nav>
+
+<section id="about"><div class="wrap">
+  <div class="section-header reveal"><div class="section-kicker">Introduction</div><h2 class="section-title">About me</h2></div>
+  <div class="about-grid">
+    <p class="about-text reveal reveal-left">I am a <strong>5th-year computer science and networks engineering student</strong> at EMSI Rabat, with a hands-on approach to building software that solves real problems. My work spans full-stack web development, test automation, AI-powered applications, and desktop tooling.</p>
+    <p class="about-text reveal reveal-right">During my internship at Morocco Customs Administration, I built automated web testing pipelines with Selenium and Cucumber, writing BDD scenarios that caught regressions before they shipped. I have also built a gesture-controlled camera tracker using OpenCV and MediaPipe, and a Morocco History chatbot powered by a local LLM. I am currently seeking a <strong>PFE internship</strong> where I can contribute to meaningful projects.</p>
+  </div>
+  <div class="about-grid" style="margin-top:3rem">
+    <div class="reveal reveal-left">
+      <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--text);margin-bottom:1rem">What I do</h3>
+      <p class="about-text">I build <strong>web platforms</strong> from frontend to backend, create <strong>automation tools</strong> that save hours of manual work, develop <strong>AI-powered applications</strong> that interact naturally with users, and design <strong>desktop software</strong> for secure data management.</p>
+    </div>
+    <div class="reveal reveal-right">
+      <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--text);margin-bottom:1rem">How I work</h3>
+      <p class="about-text">I start by understanding the problem deeply before writing any code. I follow <strong>BDD methodologies</strong>, write clean and maintainable code, and always think about the end user. I am fluent in <strong>Arabic</strong>, <strong>French</strong>, and <strong>English</strong>.</p>
+    </div>
+  </div>
+  <div style="margin-top:3rem" class="reveal">
+    <a href="experience.html" class="btn btn-ghost magnetic" data-cursor-hover>See my experience <span class="arrow">→</span></a>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><p>&copy; 2025 Magri Mohammed Yassine</p><p>Built in Rabat 🇲🇦</p></div></footer>
+<script src="js/main.js"></script>
+</body>
+</html>
