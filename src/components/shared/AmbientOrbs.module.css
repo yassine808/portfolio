@@ -1,0 +1,31 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: auto;
+  z-index: -1;
+}
+
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .08;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.orb1 {
+  width: 500px;
+  height: 500px;
+  background: var(--accent);
+  top: 10%;
+  right: -10%;
+}
+
+.orb2 {
+  width: 400px;
+  height: 400px;
+  background: #d4a853;
+  bottom: 20%;
+  left: -8%;
+}
