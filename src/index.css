@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource/geist/300.css";
 @import "@fontsource/geist/400.css";
 @import "@fontsource/geist/500.css";
 @import "@fontsource/geist/600.css";
@@ -7,19 +8,20 @@
 @import "@fontsource/geist-mono/500.css";
 
 @theme {
-  --color-bg: oklch(0.14 0.005 260);
-  --color-surface: oklch(0.18 0.006 260);
-  --color-surface-hover: oklch(0.22 0.006 260);
-  --color-border: oklch(0.28 0.006 260);
-  --color-border-hover: oklch(0.38 0.006 260);
-  --color-text: oklch(0.92 0.006 260);
-  --color-text-dim: oklch(0.62 0.006 260);
-  --color-text-muted: oklch(0.45 0.006 260);
-  --color-accent: oklch(0.72 0.12 145);
-  --color-accent-dim: oklch(0.55 0.08 145);
-  --color-accent-bg: oklch(0.25 0.04 145);
+  --color-bg: oklch(0.15 0.008 250);
+  --color-bg-elevated: oklch(0.19 0.008 250);
+  --color-surface: oklch(0.21 0.008 250);
+  --color-surface-hover: oklch(0.26 0.008 250);
+  --color-border: oklch(0.30 0.008 250);
+  --color-border-hover: oklch(0.42 0.008 250);
+  --color-text: oklch(0.95 0.005 250);
+  --color-text-secondary: oklch(0.70 0.008 250);
+  --color-text-muted: oklch(0.50 0.008 250);
+  --color-accent: oklch(0.80 0.15 145);
+  --color-accent-secondary: oklch(0.60 0.10 145);
+  --color-accent-bg: oklch(0.22 0.05 145);
 
-  --font-sans: "Geist", system-ui, sans-serif;
+  --font-sans: "Geist", system-ui, -apple-system, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -43,7 +45,7 @@ body {
   font-family: var(--font-sans);
   background-color: var(--color-bg);
   color: var(--color-text);
-  line-height: 1.7;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
@@ -69,12 +71,13 @@ img {
   display: block;
 }
 
-/* Scroll-triggered reveal animation */
+/* ─── Reveal animation ─── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s var(--ease-out-expo),
-              transform 0.6s var(--ease-out-expo);
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo);
 }
 
 .reveal.visible {
@@ -82,20 +85,50 @@ img {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
+.reveal-delay-5 { transition-delay: 0.60s; }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
+  html { scroll-behavior: auto; }
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
+}
+
+/* ─── Noise texture overlay ─── */
+.noise::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ─── Subtle grid background ─── */
+.grid-bg {
+  background-image:
+    linear-gradient(oklch(0.30 0.008 250 / 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.30 0.008 250 / 0.15) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ─── Glow line separator ─── */
+.glow-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-accent) 50%,
+    transparent 100%
+  );
+  opacity: 0.3;
 }

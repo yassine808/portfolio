@@ -11,7 +11,7 @@ import { Contact } from './pages/Contact'
 
 export default function App() {
   return (
-    <>
+    <div className="noise">
       <ScrollToTop />
       <Nav />
       <main>
@@ -25,6 +25,6 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

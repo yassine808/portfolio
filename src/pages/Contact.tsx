@@ -1,53 +1,59 @@
 import { useState, type FormEvent } from 'react'
 import { useReveal } from '../hooks/useReveal'
 import { SectionHeading } from '../components/SectionHeading'
-import { GithubLogo, LinkedinLogo, Envelope, ArrowUpRight } from 'phosphor-react'
+import { GithubLogo, LinkedinLogo, Envelope, ArrowUpRight, DownloadSimple } from 'phosphor-react'
 
 export function Contact() {
   const ref = useReveal()
 
   return (
-    <section className="pt-32 pb-32">
-      <div className="max-w-[1200px] mx-auto px-[clamp(1.5rem,4vw,4rem)]">
+    <section className="pt-28 pb-28">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10">
         <div ref={ref} className="reveal">
           <SectionHeading kicker="Contact" title="Get in touch" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20">
           <div>
-            <p className="reveal text-text-dim leading-relaxed max-w-[55ch] mb-8">
+            <p className="reveal text-text-secondary leading-relaxed max-w-[50ch] mb-10">
               I am currently seeking a PFE internship for 2025. If you have a
               role that matches my skills, or if you just want to talk about
               software engineering, I would like to hear from you.
             </p>
 
-            <div className="reveal reveal-delay-1 space-y-4 mb-12">
+            <div className="reveal reveal-delay-1 space-y-4 mb-10">
               <a
                 href="mailto:ysmagri@gmail.com"
-                className="flex items-center gap-3 text-text-dim hover:text-text transition-colors duration-200 group"
+                className="flex items-center gap-3 text-text-secondary hover:text-text transition-colors duration-200 group"
               >
-                <Envelope size={18} className="text-accent" />
+                <div className="w-9 h-9 rounded-lg bg-surface border border-border/50 flex items-center justify-center group-hover:border-border-hover transition-colors">
+                  <Envelope size={16} className="text-accent" />
+                </div>
                 <span className="text-sm">ysmagri@gmail.com</span>
               </a>
               <a
                 href="https://github.com/yassine808"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-text-dim hover:text-text transition-colors duration-200 group"
+                className="flex items-center gap-3 text-text-secondary hover:text-text transition-colors duration-200 group"
               >
-                <GithubLogo size={18} className="text-accent" />
+                <div className="w-9 h-9 rounded-lg bg-surface border border-border/50 flex items-center justify-center group-hover:border-border-hover transition-colors">
+                  <GithubLogo size={16} className="text-accent" />
+                </div>
                 <span className="text-sm">github.com/yassine808</span>
-                <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-text-muted" />
               </a>
               <a
                 href="https://linkedin.com/in/mohammed-yassine-magri"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-text-dim hover:text-text transition-colors duration-200 group"
+                className="flex items-center gap-3 text-text-secondary hover:text-text transition-colors duration-200 group"
               >
-                <LinkedinLogo size={18} className="text-accent" />
+                <div className="w-9 h-9 rounded-lg bg-surface border border-border/50 flex items-center justify-center group-hover:border-border-hover transition-colors">
+                  <LinkedinLogo size={16} className="text-accent" />
+                </div>
                 <span className="text-sm">linkedin.com/in/mohammed-yassine-magri</span>
-                <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-text-muted" />
               </a>
             </div>
 
@@ -56,10 +62,10 @@ export function Contact() {
                 href="/Magri%20mohammed%20yassine%20cv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-accent hover:text-accent-dim transition-colors duration-200 text-sm font-medium"
+                className="inline-flex items-center gap-2 text-text-muted hover:text-text transition-colors duration-200 text-sm font-medium group"
               >
+                <DownloadSimple size={14} weight="bold" />
                 Download CV
-                <ArrowUpRight size={14} weight="bold" />
               </a>
             </div>
           </div>
@@ -95,15 +101,17 @@ function ContactForm() {
       return
     }
 
-    // Static form — no backend. In production, connect to Formspree, Netlify Forms, etc.
     setStatus('success')
     setFormData({ name: '', email: '', message: '' })
   }
 
+  const inputClass =
+    'w-full bg-surface/80 border border-border/50 rounded-xl px-4 py-3.5 text-sm text-text placeholder-text-muted focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all duration-200'
+
   return (
-    <form onSubmit={handleSubmit} className="reveal space-y-6" noValidate>
+    <form onSubmit={handleSubmit} className="reveal space-y-5" noValidate>
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-text mb-2">
+        <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
           Name
         </label>
         <input
@@ -114,13 +122,13 @@ function ContactForm() {
             setFormData({ ...formData, name: e.target.value })
             setStatus('idle')
           }}
-          className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-sm text-text placeholder-text-muted focus:outline-none focus:border-accent transition-colors duration-200"
+          className={inputClass}
           placeholder="Your name"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-text mb-2">
+        <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">
           Email
         </label>
         <input
@@ -131,13 +139,13 @@ function ContactForm() {
             setFormData({ ...formData, email: e.target.value })
             setStatus('idle')
           }}
-          className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-sm text-text placeholder-text-muted focus:outline-none focus:border-accent transition-colors duration-200"
+          className={inputClass}
           placeholder="you@example.com"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-text mb-2">
+        <label htmlFor="message" className="block text-sm font-medium text-text-secondary mb-2">
           Message
         </label>
         <textarea
@@ -148,25 +156,23 @@ function ContactForm() {
             setFormData({ ...formData, message: e.target.value })
             setStatus('idle')
           }}
-          className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-sm text-text placeholder-text-muted focus:outline-none focus:border-accent transition-colors duration-200 resize-none"
+          className={`${inputClass} resize-none`}
           placeholder="Tell me about the role or project."
         />
       </div>
 
       <button
         type="submit"
-        className="w-full px-6 py-3 bg-accent text-bg font-medium text-sm rounded-lg hover:bg-accent-dim transition-colors duration-200 active:scale-[0.98]"
+        className="w-full px-6 py-3.5 bg-accent text-bg font-semibold text-sm rounded-xl hover:bg-accent-secondary transition-all duration-300 active:scale-[0.97]"
       >
         Send message
       </button>
 
       {status === 'error' && (
-        <p className="text-sm text-red-400">{errorMsg}</p>
+        <p className="text-sm text-red-400/90">{errorMsg}</p>
       )}
       {status === 'success' && (
-        <p className="text-sm text-accent">
-          Message received. I will get back to you soon.
-        </p>
+        <p className="text-sm text-accent">Message received. I will get back to you soon.</p>
       )}
     </form>
   )

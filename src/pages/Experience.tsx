@@ -14,16 +14,14 @@ const experiences: ExperienceItem[] = [
     period: '2024',
     title: 'Software Engineering Intern',
     company: 'Morocco Customs Administration',
-    description:
-      'Built automated web testing pipelines using Selenium and Cucumber. Wrote BDD test specifications in Gherkin, reducing manual testing effort and catching regressions before staging deployment.',
+    description: 'Built automated web testing pipelines using Selenium and Cucumber. Wrote BDD test specifications in Gherkin, reducing manual testing effort and catching regressions before staging deployment.',
     tags: ['Selenium', 'Cucumber', 'Java', 'BDD', 'Gherkin'],
   },
   {
     period: '2021 — 2026',
-    title: 'Engineering Student — Computer Science & Networks',
+    title: 'Engineering Student — CS & Networks',
     company: 'EMSI Rabat',
-    description:
-      '5-year engineering program covering software development, networking, distributed systems, and applied mathematics. Active in personal projects spanning full-stack web, AI/ML, and desktop automation.',
+    description: '5-year engineering program covering software development, networking, distributed systems, and applied mathematics. Active in personal projects spanning full-stack web, AI/ML, and desktop automation.',
     tags: ['Software Engineering', 'Networking', 'Distributed Systems'],
   },
 ]
@@ -32,8 +30,8 @@ export function Experience() {
   const ref = useReveal()
 
   return (
-    <section className="pt-32 pb-32">
-      <div className="max-w-[1200px] mx-auto px-[clamp(1.5rem,4vw,4rem)]">
+    <section className="pt-28 pb-28">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10">
         <div ref={ref} className="reveal">
           <SectionHeading kicker="Career" title="Experience" />
         </div>
@@ -42,25 +40,25 @@ export function Experience() {
           {experiences.map((item, i) => (
             <article
               key={item.title}
-              className={`reveal reveal-delay-${Math.min(i + 1, 5)} grid grid-cols-[120px_1fr] md:grid-cols-[180px_1fr] gap-4 md:gap-12 py-10 border-b border-border`}
+              className={`reveal reveal-delay-${Math.min(i + 1, 5)} grid grid-cols-[100px_1fr] md:grid-cols-[160px_1fr] gap-4 md:gap-10 py-10 border-b border-border/50`}
             >
               <div>
-                <p className="text-xs font-mono text-text-muted">{item.period}</p>
+                <p className="text-[11px] font-mono text-text-muted tracking-wider">{item.period}</p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-text mb-1">
+                <h3 className="text-[1.15rem] font-semibold text-text mb-1.5 leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-sm text-accent mb-4">{item.company}</p>
-                <p className="text-sm text-text-dim leading-relaxed max-w-[60ch] mb-4">
+                <p className="text-sm text-accent font-medium mb-4">{item.company}</p>
+                <p className="text-sm text-text-secondary leading-relaxed max-w-[58ch] mb-5">
                   {item.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {item.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs font-mono text-text-muted bg-surface px-2 py-1 rounded"
+                      className="text-[11px] font-mono text-text-muted bg-surface/80 border border-border/50 px-2.5 py-1 rounded-md"
                     >
                       {tag}
                     </span>
